@@ -5,7 +5,7 @@ const todoList = document.querySelector('.todo-list');
 const todoCompleted = document.querySelector('.todo-completed');
 
 const toDoData = [];
-
+const toDoDataStr = JSON.parse(localStorage.getItem('toDoData'));
 
 const render = function () {
     localStorage.clear();
@@ -54,7 +54,6 @@ todoControl.addEventListener('submit', function(event) {
 });
 
 const load = function () {
-    const toDoDataStr = JSON.parse(localStorage.getItem('toDoData'));
     toDoDataStr.forEach(function (item) {
         const loadToDo = {
             text: item.text,
@@ -66,4 +65,6 @@ const load = function () {
     
 };
 
-load();
+if (toDoDataStr != null) {
+    load();
+}
